@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product, ProductService } from '../../services/product';
 
 @Component({
   selector: 'app-product-card',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './product-card.css',
 })
 export class ProductCard {
-
+  @Input() product!: Product; 
+  constructor(private productService: ProductService) {}
+  eliminar() {
+    this.productService.eliminarProducto(this.product._id);
+  }
 }
